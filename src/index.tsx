@@ -104,13 +104,19 @@ app.get('/admin', (c) => {
         </div>
         
         <div class="menu-btn-list">
-          <button class="menu-btn green">기본정보 설정</button>
+          <button class="menu-btn green">계약 사업장 정보 관리</button>
           <button class="menu-btn white">계약 사업장 관리</button>
           <button class="menu-btn white">계약 사업장 등록</button>
-          <button class="menu-btn green">협력사 정보 관리</button>
+          <button class="menu-btn green">계약 사업장 직원 정보 관리</button>
+          <button class="menu-btn white">계약 사업장 직원 관리</button>
+          <button class="menu-btn white">계약 사업장 직원 등록</button>
+          <button class="menu-btn green">이용 관리</button>
           <button class="menu-btn white">사고사례 관리</button>
           <button class="menu-btn white">안전보건자료 관리</button>
-          <button class="menu-btn green">계정 관리</button>
+          <button class="menu-btn white">공지 관리</button>
+          <button class="menu-btn white">문자 발송</button>
+          <button class="menu-btn green">계정 및 권한 관리</button>
+          <button class="menu-btn white">관리자 계정 관리</button>
           <button class="menu-btn white">권한 관리</button>
         </div>
       </nav>
@@ -375,20 +381,26 @@ app.get('/headquarters', (c) => {
       {/* 좌측 사이드바 - 통일된 스타일 */}
       <nav class="common-sidebar">
         <div class="user-info-box">
-          <p class="business-name">본 사명 : 무림공동주택</p>
+          <p class="business-name">본 사명 : 문화휴양지</p>
           <p class="site-name">사업장코드 : 본사</p>
           <p class="manager-name">담 당 : 김철수 ●</p>
           <p class="last-login">최종접속일자 : 2024-12-31</p>
         </div>
         
         <div class="menu-btn-list">
-          <button class="menu-btn green">기본정보 설정</button>
+          <button class="menu-btn green">사업장 정보 관리</button>
           <button class="menu-btn white">사업장 관리</button>
           <button class="menu-btn white">사업장 등록</button>
-          <button class="menu-btn green">협력사 정보 관리</button>
+          <button class="menu-btn green">직원 정보 관리</button>
           <button class="menu-btn white">직원 관리</button>
           <button class="menu-btn white">직원 등록</button>
-          <button class="menu-btn green">계정 관리</button>
+          <button class="menu-btn green">이용 관리</button>
+          <button class="menu-btn white">사고사례 관리</button>
+          <button class="menu-btn white">안전보건조치 관리</button>
+          <button class="menu-btn white">공지 관리</button>
+          <button class="menu-btn white">문자 발송</button>
+          <button class="menu-btn green">계정 및 권한 관리</button>
+          <button class="menu-btn white">관리자 계정관리</button>
           <button class="menu-btn white">권한 관리</button>
         </div>
       </nav>

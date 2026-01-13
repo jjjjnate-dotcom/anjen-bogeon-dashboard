@@ -2838,3 +2838,66 @@ body {
   color: #4b5563;
 }
 
+
+/* 한공원 대시보드 레이아웃 개선 */
+.admin-main-wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.admin-main-wrapper .monitoring-section {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 0;
+}
+
+.admin-main-wrapper .right-panel {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.header-admin .header-left {
+  display: flex;
+  align-items: center;
+}
+
+/* 우측 패널 개선 */
+.admin-main-wrapper .panel-box {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.admin-main-wrapper .panel-box h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* 하단 섹션 개선 */
+.bottom-section-admin {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px 20px 20px;
+}
+
+.system-inquiry-box,
+.site-registration-box {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+

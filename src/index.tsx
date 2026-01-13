@@ -94,46 +94,30 @@ app.get('/', (c) => {
 app.get('/admin', (c) => {
   return c.render(
     <div class="dashboard admin-dashboard">
-      {/* 좌측 사이드바 */}
-      <nav class="sidebar-admin">
-        <div class="logo-admin">
-          <div style="font-size:14px; font-weight:700; color:#ffd700; letter-spacing:1px;">중대재해관리시스템</div>
-          <div class="notification-badge">1</div>
+      {/* 좌측 사이드바 - 통일된 스타일 */}
+      <nav class="common-sidebar">
+        <div class="user-info-box">
+          <p class="business-name">본 사명 : 한국공동주택관리</p>
+          <p class="site-name">사업장코드 : 교육원</p>
+          <p class="manager-name">담 당 : 홍길동 ●</p>
+          <p class="last-login">최종접속일시 : 2024-12-31</p>
         </div>
         
-        <div class="user-info-admin">
-          <p style="font-size:11px; color:#fbbf24; margin-bottom:3px;"><strong>본 사 명 :</strong> 한국공동주택관리</p>
-          <p style="font-size:11px; color:#fbbf24; margin-bottom:3px;">사업장코드 : 교육원</p>
-          <p style="font-size:11px; color:#fff; margin-bottom:3px;"><strong>담 당 :</strong> 홍길동</p>
-          <p style="font-size:10px; color:#cbd5e0;">최종접속일시 : 2024-12-31</p>
-        </div>
-        
-        <div class="menu-list-admin">
-          <div class="menu-section">
-            <div class="menu-title">계약 사업장 정보 관리</div>
-            <a href="#" class="menu-item active">● 계약 사업장 관리</a>
-            <a href="#" class="menu-item">● 계약 사업장 등록</a>
-          </div>
-          
-          <div class="menu-section">
-            <div class="menu-title">계약 사업장 직원 정보 관리</div>
-            <a href="#" class="menu-item">● 계약 사업장 직원 관리</a>
-            <a href="#" class="menu-item">● 계약 사업장 직원 등록</a>
-          </div>
-          
-          <div class="menu-section">
-            <div class="menu-title">이용 관리</div>
-            <a href="#" class="menu-item">● 사고사례 관리</a>
-            <a href="#" class="menu-item">● 안전보건자료 관리</a>
-            <a href="#" class="menu-item">● 공지 관리</a>
-            <a href="#" class="menu-item">● 문자 발송</a>
-          </div>
-          
-          <div class="menu-section">
-            <div class="menu-title">계정 및 권한 관리</div>
-            <a href="#" class="menu-item">● 관리자 계정관리</a>
-            <a href="#" class="menu-item">● 권한 관리</a>
-          </div>
+        <div class="menu-btn-list">
+          <button class="menu-btn green">계약 사업장 정보 관리</button>
+          <button class="menu-btn white">계약 사업장 관리</button>
+          <button class="menu-btn white">계약 사업장 등록</button>
+          <button class="menu-btn green">계약 사업장 직원 정보 관리</button>
+          <button class="menu-btn white">계약 사업장 직원 관리</button>
+          <button class="menu-btn white">계약 사업장 직원 등록</button>
+          <button class="menu-btn green">이용 관리</button>
+          <button class="menu-btn white">사고사례 관리</button>
+          <button class="menu-btn white">안전보건자료 관리</button>
+          <button class="menu-btn white">공지 관리</button>
+          <button class="menu-btn white">문자 발송</button>
+          <button class="menu-btn green">계정 및 권한 관리</button>
+          <button class="menu-btn white">관리자 계정 관리</button>
+          <button class="menu-btn white">권한 관리</button>
         </div>
       </nav>
       
@@ -142,11 +126,9 @@ app.get('/admin', (c) => {
         {/* 상단 헤더 */}
         <header class="header-admin">
           <div class="header-left">
-            <div class="office-info">
-              <span>본사 명 : 한국공동주택관리</span>
-              <span>사업장코드 : 교육원</span>
-              <span>담 당 : 홍길동</span>
-            </div>
+            <span style="color:#ffd700; font-weight:600; margin-right:20px;">본사 명 : 한국공동주택관리</span>
+            <span style="color:#ffd700; font-weight:600; margin-right:20px;">사업장코드 : 교육원</span>
+            <span style="color:#fff; font-weight:600;">담 당 : 홍길동</span>
           </div>
           <div class="header-right">
             <span class="site-count">총 사업장 : 10개</span>
@@ -154,10 +136,12 @@ app.get('/admin', (c) => {
           </div>
         </header>
         
-        {/* 계약사업장 모니터링 테이블 */}
-        <div class="monitoring-section">
-          <h3>계약사업장 모니터링</h3>
-          <table class="monitoring-table">
+        {/* 메인 래퍼 - 테이블과 우측 패널을 나란히 */}
+        <div class="admin-main-wrapper">
+          {/* 계약사업장 모니터링 테이블 */}
+          <div class="monitoring-section">
+            <h3>계약사업장 모니터링</h3>
+            <table class="monitoring-table">
             <thead>
               <tr>
                 <th rowspan="2">NO</th>
@@ -316,6 +300,7 @@ app.get('/admin', (c) => {
                 </tr>
               </tbody>
             </table>
+          </div>
           </div>
         </div>
         

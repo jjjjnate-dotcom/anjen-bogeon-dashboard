@@ -94,107 +94,290 @@ app.get('/', (c) => {
 app.get('/admin', (c) => {
   return c.render(
     <div class="dashboard admin-dashboard">
-      <nav class="sidebar">
-        <div class="logo">중대재해 관리시스템</div>
-        <div class="user-info">
-          <p>교육원 관리자</p>
-          <p class="user-name">홍길동</p>
+      {/* 좌측 사이드바 */}
+      <nav class="sidebar-admin">
+        <div class="logo-admin">
+          <span class="logo-text">중대재해관리시스템</span>
+          <span class="badge-notification">1</span>
         </div>
-        <ul class="menu">
-          <li class="active"><a href="/admin">메인</a></li>
-          <li><a href="/admin/organizations">계약사업장 관리</a></li>
-          <li><a href="/admin/compliance">이행조치 현황</a></li>
-          <li><a href="/admin/notices">사고사례 관리</a></li>
-          <li><a href="/admin/messages">문자발송 관리</a></li>
-          <li><a href="/admin/users">계정 및 권한 관리</a></li>
+        
+        <div class="user-info-admin">
+          <p>본사 명 : 한국공동주택관리</p>
+          <p>사업장코드 : 교육원</p>
+          <p class="user-name">담 당 : 홍길동 ●</p>
+          <p>최종접속일시 : 2024-12-31</p>
+        </div>
+        
+        <ul class="menu-admin">
+          <li class="menu-section active">계약 사업장 정보 관리</li>
+          <li class="menu-item"><a href="/admin/sites">계약 사업장 관리</a></li>
+          <li class="menu-item"><a href="/admin/sites/register">계약 사업장 등록</a></li>
+          
+          <li class="menu-section">계약 사업장 직원 정보 관리</li>
+          <li class="menu-item"><a href="/admin/employees">계약 사업장 직원 관리</a></li>
+          <li class="menu-item"><a href="/admin/employees/register">계약 사업장 직원 등록</a></li>
+          
+          <li class="menu-section">이용 관리</li>
+          <li class="menu-item"><a href="/admin/accidents">사고사례 관리</a></li>
+          <li class="menu-item"><a href="/admin/safety-data">안전보건자료 관리</a></li>
+          <li class="menu-item"><a href="/admin/notices">공지 관리</a></li>
+          <li class="menu-item"><a href="/admin/messages">문자 발송</a></li>
+          
+          <li class="menu-section">계정 및 권한 관리</li>
+          <li class="menu-item"><a href="/admin/admins">관리자 계정 관리</a></li>
+          <li class="menu-item"><a href="/admin/permissions">권한 관리</a></li>
         </ul>
       </nav>
       
-      <main class="main-content">
-        <h2>계약사업장 모니터링</h2>
+      {/* 메인 컨텐츠 */}
+      <main class="main-content-admin">
+        {/* 상단 헤더 */}
+        <header class="header-admin">
+          <div class="header-left">
+            <div class="office-info">
+              <span>본사 명 : 한국공동주택관리</span>
+              <span>사업장코드 : 교육원</span>
+              <span>담 당 : 홍길동</span>
+            </div>
+          </div>
+          <div class="period-badge">2025년 상반기</div>
+        </header>
         
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>계약 사업장 현황</h3>
-            <div class="stat-number">8<span class="unit">개</span></div>
-            <p>전체 계약 사업장</p>
-          </div>
-          
-          <div class="stat-card">
-            <h3>이행 완료율</h3>
-            <div class="stat-number">75<span class="unit">%</span></div>
-            <p>2025년 상반기</p>
-          </div>
-          
-          <div class="stat-card">
-            <h3>직영 근로자</h3>
-            <div class="stat-number">127<span class="unit">명</span></div>
-          </div>
-          
-          <div class="stat-card">
-            <h3>도급 근로자</h3>
-            <div class="stat-number">243<span class="unit">명</span></div>
-          </div>
-        </div>
-        
-        <div class="section">
-          <h3>계약 사업장 목록</h3>
-          <table class="data-table">
+        {/* 계약사업장 모니터링 테이블 */}
+        <div class="monitoring-section">
+          <h3>계약사업장 모니터링</h3>
+          <table class="monitoring-table">
             <thead>
               <tr>
-                <th>본사명</th>
-                <th>사업장 수</th>
-                <th>직영 근로자</th>
-                <th>도급 근로자</th>
-                <th>이행률</th>
-                <th>관리</th>
+                <th rowspan="2">NO</th>
+                <th rowspan="2">계약 사업장</th>
+                <th rowspan="2">등록<br/>근로자수</th>
+                <th rowspan="2">안전/보건<br/>투수</th>
+                <th colspan="6" class="highlight-orange">이용횟수</th>
+                <th rowspan="2">상태</th>
+              </tr>
+              <tr>
+                <th class="highlight-orange">안전/보건<br/>투수</th>
+                <th class="highlight-blue">교육 투수</th>
+                <th class="highlight-red">위험성평가</th>
+                <th class="highlight-yellow">종사/협의<br/>청취</th>
+                <th class="highlight-purple">안전보건관<br/>리규정</th>
+                <th class="highlight-blue">신규채용</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>무림개발</td>
-                <td>3개</td>
-                <td>45명</td>
-                <td>85명</td>
-                <td><span class="badge badge-success">85%</span></td>
-                <td><button class="btn-sm" onclick="viewDetail(2)">보기</button></td>
+                <td>1</td>
+                <td class="site-name">무림공동주택</td>
+                <td>100</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td>완료</td>
+                <td class="status-active">이용중</td>
               </tr>
               <tr>
-                <td>ABC건설</td>
-                <td>2개</td>
-                <td>32명</td>
-                <td>58명</td>
-                <td><span class="badge badge-warning">65%</span></td>
-                <td><button class="btn-sm" onclick="viewDetail(3)">보기</button></td>
+                <td>2</td>
+                <td class="site-name">조은별공동주택</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-active">이용중</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td class="site-name">서울명공동주택</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-active">이용중</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td class="site-name">경기공동주택</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-active">이용중</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td class="site-name">충북시공동주택</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-active">이용중</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td class="site-name">충남</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-active">이용중</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td class="site-name">서귀포</td>
+                <td>100</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="status-inactive">미사용</td>
               </tr>
             </tbody>
           </table>
         </div>
         
-        <div class="section">
-          <h3>사업장 등록 현황 <small class="text-muted">실시간 변동</small></h3>
-          <div class="recent-activities">
-            <div class="activity-item">
-              <span class="badge badge-new">신규</span>
-              <span>무림하우징 3단지</span>
-              <span class="time">2시간 전</span>
+        {/* 우측 사이드 패널 */}
+        <div class="right-panel">
+          {/* 계약 사업장 상세 신규 구분 등록 현황 */}
+          <div class="panel-box">
+            <h4>계약 사업장 상세 신규 구분 등록 현황</h4>
+            <div class="stats-grid-panel">
+              <div class="stat-row">
+                <span class="stat-label">등록</span>
+                <span class="stat-value">$20</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">토지사용료</span>
+                <span class="stat-value">$1</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">토지사용료</span>
+                <span class="stat-value">1,500</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">구공유토지</span>
+                <span class="stat-value">6,000</span>
+              </div>
             </div>
-            <div class="activity-item">
-              <span class="badge badge-update">수정</span>
-              <span>ABC아파트 B동</span>
-              <span class="time">5시간 전</span>
+          </div>
+          
+          {/* 계약 사업장 구분 등록 현황 */}
+          <div class="panel-box">
+            <h4>계약 사업장 구분 등록 현황</h4>
+            <div class="stats-grid-panel">
+              <div class="stat-row">
+                <span class="stat-label">등록</span>
+                <span class="stat-value">$20</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">구분</span>
+                <span class="stat-value"></span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">구매사업장</span>
+                <span class="stat-value">120</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-label">구공유사업장</span>
+                <span class="stat-value">380</span>
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* 하단 알림 섹션 */}
+        <div class="alerts-section">
+          <div class="alert-box">
+            <h4><span class="badge-m">M</span> 사업장 문의</h4>
+            <div class="alert-item">
+              0000 아파트 오늘등록 요청<span class="alert-date">당일 대기</span>
+            </div>
+            <div class="alert-item">
+              수정 확정 요청<span class="alert-date">당일 대기</span>
+            </div>
+            <div class="alert-item">
+              사업자명 오등록 오류<span class="alert-date">당일 대기</span>
+            </div>
+            <div class="alert-item">
+              사업자명 오등록 오류<span class="alert-date">당일 대기</span>
+            </div>
+            <div class="alert-item">
+              사업자명 오등록 오류<span class="alert-date">수정 보안</span>
+            </div>
+          </div>
+          
+          <div class="alert-box">
+            <h4>사업장 등록 현황</h4>
+            <table style="width:100%; font-size:11px; border-collapse: collapse;">
+              <thead>
+                <tr style="background:#f3f4f6">
+                  <th style="padding:8px; border:1px solid #e5e7eb">계약사업장 명</th>
+                  <th style="padding:8px; border:1px solid #e5e7eb">등록사업장명</th>
+                  <th style="padding:8px; border:1px solid #e5e7eb">등록일</th>
+                  <th style="padding:8px; border:1px solid #e5e7eb">상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:6px; border:1px solid #e5e7eb">무림 아파트</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">0000아파트 오류</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">2025/01/01</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">등록</td>
+                </tr>
+                <tr>
+                  <td style="padding:6px; border:1px solid #e5e7eb">우리경리</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">0000아파트 오류</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">2025/01/01</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb">상담</td>
+                </tr>
+                <tr>
+                  <td style="padding:6px; border:1px solid #e5e7eb">사무사주업</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                </tr>
+                <tr>
+                  <td style="padding:6px; border:1px solid #e5e7eb">경기공주업</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                </tr>
+                <tr>
+                  <td style="padding:6px; border:1px solid #e5e7eb">충남</td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                  <td style="padding:6px; border:1px solid #e5e7eb"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </main>
-      
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          function viewDetail(orgId) {
-            window.location.href = '/admin/organizations/' + orgId;
-          }
-        `
-      }} />
     </div>
   )
 })

@@ -523,116 +523,178 @@ app.get('/headquarters', (c) => {
 app.get('/site', (c) => {
   return c.render(
     <div class="dashboard site-dashboard">
-      <nav class="sidebar">
-        <div class="logo">중대재해 관리시스템</div>
-        <div class="user-info">
-          <p>무림하우징 1단지</p>
-          <p class="user-name">이영희</p>
+      {/* 헤더 */}
+      <header class="site-header">
+        <div class="site-header-left">
+          <span class="site-logo">중대재해관리시스템</span>
         </div>
-        <ul class="menu">
-          <li class="active"><a href="/site">메인</a></li>
-          <li><a href="/site/info">사업장 정보</a></li>
-          <li><a href="/site/employees">직원 정보</a></li>
-          <li><a href="/site/vendors">업체 정보</a></li>
-          <li><a href="/site/compliance">이행조치 등록</a></li>
-          <li><a href="/site/education">교육/훈련 관리</a></li>
-          <li><a href="/site/notices">사고사례</a></li>
-        </ul>
+        <div class="site-header-right">
+          <span class="site-period">2025년 상반기</span>
+        </div>
+      </header>
+      
+      {/* 좌측 사이드바 */}
+      <nav class="sidebar-site">
+        <div class="user-box-site">
+          <p class="user-label">본 사명 : 무림공동주택</p>
+          <p class="user-label">사업장명 : 전세토마 아파트</p>
+          <p class="user-name">담 당 : 김철수 ●</p>
+          <p class="user-date">최근접속일자 : 2024-12-31</p>
+        </div>
+        
+        <div class="menu-grid">
+          <button class="menu-card navy">법과교육<br/>시스템</button>
+          <button class="menu-card navy">아파트 정리</button>
+          <button class="menu-card navy">한국공동주택<br/>교육진흥원</button>
+          <button class="menu-card navy">전자안전<br/>시스템</button>
+          <button class="menu-card navy">재고표</button>
+          <button class="menu-card navy">위험성평가 담당<br/>자 교육 시스템</button>
+        </div>
+        
+        <button class="btn-side green">기본정보 설정</button>
+        <button class="btn-side white">사무장 정보 관리</button>
+        <button class="btn-side white">직원 정보 등록</button>
+        <button class="btn-side green">협력사 정보 관리</button>
+        <button class="btn-side white">협력사 정보</button>
+        <button class="btn-side white">협력사 정보등록</button>
+        <button class="btn-side green">계정 관리</button>
+        <button class="btn-side white">계정정보 권한관리</button>
       </nav>
       
-      <main class="main-content">
-        <h2>2025년 상반기 이행조치 현황</h2>
-        
-        {/* 팝업 알림 */}
-        <div class="popup-alert show">
-          <div class="popup-content">
-            <h3>📢 이행 요청</h3>
-            <p><strong>2025년 상반기 안전보건 이행 사항 등록 요청</strong></p>
-            <p>매년 [반기] 정기적으로 안전,보건 이행 점검을 실시 하고 있습니다.<br/>
-            개별 현장담당자 께서는 요청기간 안전보건 이행 사항을 등록해 주시기 바랍니다.</p>
-            <p class="deadline">기한: 2025년 6월 30일</p>
-            <button onclick="goToCompliance()">이행조치 등록하기</button>
-            <button onclick="closePopup()" class="btn-secondary">나중에</button>
+      {/* 메인 컨텐츠 */}
+      <main class="main-content-site">
+        {/* 팝업 */}
+        <div class="popup-overlay show" onclick="closePopup()">
+          <div class="popup-box" onclick="event.stopPropagation()">
+            <button class="popup-close" onclick="closePopup()">✕</button>
+            <h3 class="popup-title">중대재해관리시스템</h3>
+            <div class="popup-body">
+              <h4>정기</h4>
+              <p><strong>2025년 상반기 안전보건 이행 상황 등록 요청</strong></p>
+              <p>안녕하세요 본사 안전보건 담당자입니다.</p>
+              <p>매년 [반기] 정기적으로 안전,보건 이행 점검을 실시하고 있습니다.</p>
+              <p class="popup-date">2025.01.01</p>
+              <p class="popup-time">13:59</p>
+            </div>
+            <button class="popup-btn-black">공지사항 바로가기</button>
+            <div class="popup-footer">
+              <label><input type="checkbox" /> 하루동안 보지 않기</label>
+            </div>
           </div>
         </div>
         
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>직영 근로자</h3>
-            <div class="stat-number">15<span class="unit">명</span></div>
-          </div>
-          
-          <div class="stat-card">
-            <h3>도급 근로자</h3>
-            <div class="stat-number">25<span class="unit">명</span></div>
-          </div>
-          
-          <div class="stat-card success">
-            <h3>이행 완료</h3>
-            <div class="stat-number">8<span class="unit">건</span></div>
-          </div>
-          
-          <div class="stat-card warning">
-            <h3>이행 대기</h3>
-            <div class="stat-number">3<span class="unit">건</span></div>
-          </div>
-        </div>
-        
-        <div class="section">
-          <h3>이행조치 등록 현황 <small>(2025년 상반기)</small></h3>
-          
-          <div class="compliance-grid">
-            <div class="compliance-category">
-              <h4>안전/보건 이행관리</h4>
-              <div class="compliance-items">
-                <div class="compliance-item completed">
-                  <span class="item-name">작업중지권 게시 이행</span>
-                  <span class="badge badge-success">등록완료</span>
-                  <button class="btn-sm" onclick="viewItem(1)">보기</button>
+        {/* 3개 메인 박스 */}
+        <div class="main-boxes">
+          <div class="main-box">
+            <div class="box-header green">
+              안전보건관리 이행 등록 <button class="btn-arrow">▶</button>
+            </div>
+            <div class="box-body">
+              <p class="box-status">이행 등록 완료</p>
+              <button class="btn-yellow">바로등록</button>
+              <div class="box-sub-section">
+                <div class="sub-header green-light">
+                  1. 주수사업의견청취 등록<br/>
+                  2. 주주 도급 안전관리이행 등록
                 </div>
-                <div class="compliance-item pending">
-                  <span class="item-name">MSDS 게시 이행</span>
-                  <span class="badge badge-warning">등록대기</span>
-                  <button class="btn-sm btn-primary" onclick="registerItem(2)">등록</button>
-                </div>
-                <div class="compliance-item rejected">
-                  <span class="item-name">법령의 요지 게시 이행</span>
-                  <span class="badge badge-danger">조치반려</span>
-                  <button class="btn-sm btn-warning" onclick="viewItem(3)">수정</button>
-                </div>
-                <div class="compliance-item">
-                  <span class="item-name">안전보건관리규정 게시</span>
-                  <span class="badge badge-secondary">미등록</span>
-                  <button class="btn-sm btn-primary" onclick="registerItem(4)">등록</button>
-                </div>
+                <p class="sub-status">이행 등록 완료</p>
+                <button class="btn-yellow">바로등록</button>
               </div>
             </div>
-            
-            <div class="compliance-category">
-              <h4>교육/훈련 이행관리</h4>
-              <div class="compliance-items">
-                <div class="compliance-item completed">
-                  <span class="item-name">산업안전보건교육</span>
-                  <span class="badge badge-success">등록완료</span>
-                  <button class="btn-sm" onclick="viewItem(11)">보기</button>
+          </div>
+          
+          <div class="main-box">
+            <div class="box-header green">
+              교육/훈련 이행 등록 <button class="btn-arrow">▶</button>
+            </div>
+            <div class="box-body">
+              <p class="box-status">이행 등록 완료</p>
+              <button class="btn-yellow">바로등록</button>
+            </div>
+          </div>
+          
+          <div class="main-box">
+            <div class="box-header green">
+              위험성 평가 등록 <button class="btn-arrow">▶</button>
+            </div>
+            <div class="box-body">
+              <p class="box-status">이행 등록 완료</p>
+              <button class="btn-yellow">바로등록</button>
+              <div class="box-sub-section">
+                <div class="sub-header green-light">
+                  신규채용자 이행등록
                 </div>
-                <div class="compliance-item">
-                  <span class="item-name">관리감독자 교육</span>
-                  <span class="badge badge-secondary">미등록</span>
-                  <button class="btn-sm btn-primary" onclick="registerItem(12)">등록</button>
-                </div>
+                <p class="sub-status">이행 등록 완료</p>
               </div>
             </div>
           </div>
         </div>
         
-        <div class="section">
-          <h3>최근 공지사항 <span class="badge badge-new">N</span></h3>
-          <div class="notice-list">
-            <div class="notice-item">
-              <span class="badge badge-new">신규</span>
-              <a href="/site/notices/1">[산업안전보건관리단] 화재사고 사례 전파</a>
-              <span class="date">2025-01-10</span>
+        {/* 하단 알림 카드 3개 */}
+        <div class="notification-cards-site">
+          <div class="noti-card-site">
+            <div class="noti-header-site">
+              <div class="noti-icon red">N</div>
+              <h4>사고사례</h4>
+              <button class="btn-more-white">더보기 +</button>
+            </div>
+            <div class="noti-items-site">
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="noti-card-site">
+            <div class="noti-header-site">
+              <div class="noti-icon red">N</div>
+              <h4>안전보건자료</h4>
+              <button class="btn-more-white">더보기 +</button>
+            </div>
+            <div class="noti-items-site">
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="noti-card-site">
+            <div class="noti-header-site">
+              <div class="noti-icon red">N</div>
+              <h4>공지사항</h4>
+              <button class="btn-more-white">더보기 +</button>
+            </div>
+            <div class="noti-items-site">
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
+              <div class="noti-item-site">
+                <span class="badge-n">N</span>
+                <span>[산업안전보건관리단] 재해사고 발생 전파 멸어사고</span>
+              </div>
             </div>
           </div>
         </div>
@@ -641,19 +703,7 @@ app.get('/site', (c) => {
       <script dangerouslySetInnerHTML={{
         __html: `
           function closePopup() {
-            document.querySelector('.popup-alert').classList.remove('show');
-          }
-          
-          function goToCompliance() {
-            window.location.href = '/site/compliance';
-          }
-          
-          function viewItem(itemId) {
-            window.location.href = '/site/compliance/' + itemId;
-          }
-          
-          function registerItem(itemId) {
-            window.location.href = '/site/compliance/' + itemId + '/register';
+            document.querySelector('.popup-overlay').classList.remove('show');
           }
         `
       }} />

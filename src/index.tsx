@@ -14,83 +14,78 @@ app.use('/static/*', serveStatic({ root: './public' }))
 // 렌더러 미들웨어
 app.use(renderer)
 
-// 로그인 페이지
+// 메인 랜딩 페이지 (3개 대시보드 선택)
 app.get('/', (c) => {
   return c.render(
-    <div class="login-container">
-      <div class="login-box">
-        <div class="login-header">
-          <h1>중 대 재 해 관 리 시스템</h1>
+    <div class="landing-page">
+      <div class="landing-container">
+        <div class="landing-header">
+          <h1>중대재해 관리 시스템</h1>
+          <p class="landing-subtitle">데모 버전 - 대시보드를 선택해주세요</p>
         </div>
         
-        <div class="login-form">
-          <div class="input-group">
-            <label>아이디</label>
-            <input type="text" name="username" placeholder="아이디를 입력하세요" />
+        <div class="dashboard-cards">
+          <a href="/admin" class="dashboard-card card-admin">
+            <div class="card-icon">🏢</div>
+            <h2>한공원 (교육원)</h2>
+            <p>전체 사업장 모니터링</p>
+            <ul class="card-features">
+              <li>• 계약사업장 현황</li>
+              <li>• 이행조치 통계</li>
+              <li>• 실시간 모니터링</li>
+            </ul>
+            <div class="card-footer">
+              <span class="badge-role">관리자</span>
+            </div>
+          </a>
+          
+          <a href="/headquarters" class="dashboard-card card-hq">
+            <div class="card-icon">🏗️</div>
+            <h2>본사 대시보드</h2>
+            <p>소속 사업장 관리</p>
+            <ul class="card-features">
+              <li>• 사업장 이행 관리</li>
+              <li>• 이행 요청 등록</li>
+              <li>• 직원/업체 관리</li>
+            </ul>
+            <div class="card-footer">
+              <span class="badge-role">본사 담당자</span>
+            </div>
+          </a>
+          
+          <a href="/site" class="dashboard-card card-site">
+            <div class="card-icon">🏘️</div>
+            <h2>사업장 대시보드</h2>
+            <p>이행조치 등록</p>
+            <ul class="card-features">
+              <li>• 안전보건 이행 등록</li>
+              <li>• 교육/훈련 관리</li>
+              <li>• 위험성 평가</li>
+            </ul>
+            <div class="card-footer">
+              <span class="badge-role">사업장 담당자</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="landing-info">
+          <div class="info-box">
+            <h3>📌 데모 안내</h3>
+            <p>현재 3가지 권한별 대시보드를 자유롭게 탐색할 수 있습니다.</p>
+            <p>로그인 기능은 추후 연동될 예정입니다.</p>
           </div>
           
-          <div class="input-group">
-            <label>비밀번호</label>
-            <input type="password" name="password" placeholder="비밀번호를 입력하세요" />
-          </div>
-          
-          <button class="btn-login" onclick="login()">로그인</button>
-          
-          <div class="login-links">
-            <span>로그인 정보를 분실하셨습니까?</span>
-            <a href="/find-id">아이디 찾기</a> / <a href="/find-password">비밀번호 찾기</a>
-          </div>
-          
-          <div class="login-footer">
-            <a href="/terms">가입관련문의</a> ∥ 
-            <a href="/terms">서비스이용약관</a> ∥ 
-            <a href="/privacy">개인정보처리방침</a>
+          <div class="info-box">
+            <h3>🎯 구현 완료 기능</h3>
+            <ul>
+              <li>✅ PPT 기반 UI 완벽 재현</li>
+              <li>✅ 권한별 대시보드 분리</li>
+              <li>✅ 데이터베이스 스키마 구축</li>
+              <li>✅ 반응형 디자인</li>
+            </ul>
           </div>
         </div>
       </div>
-      
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          function login() {
-            const username = document.querySelector('input[name="username"]').value;
-            const password = document.querySelector('input[name="password"]').value;
-            
-            if (!username || !password) {
-              alert('아이디와 비밀번호를 입력해주세요');
-              return;
-            }
-            
-            // TODO: 실제 로그인 API 호출
-            // 임시로 role에 따라 페이지 이동
-            fetch('/api/auth/login', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email: username, password: password })
-            })
-            .then(res => res.json())
-            .then(data => {
-              if (data.success) {
-                localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.href = data.user.role === 'admin' ? '/admin' : 
-                                      data.user.role === 'headquarters' ? '/headquarters' : '/site';
-              } else {
-                alert(data.message || '로그인에 실패했습니다');
-              }
-            })
-            .catch(err => {
-              console.error(err);
-              alert('로그인 중 오류가 발생했습니다');
-            });
-          }
-          
-          // Enter 키로 로그인
-          document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-              login();
-            }
-          });
-        `
-      }} />
     </div>
   )
 })

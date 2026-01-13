@@ -94,30 +94,46 @@ app.get('/', (c) => {
 app.get('/admin', (c) => {
   return c.render(
     <div class="dashboard admin-dashboard">
-      {/* 좌측 사이드바 - 통일된 스타일 */}
-      <nav class="common-sidebar">
-        <div class="user-info-box">
-          <p class="business-name">본 사명 : 한국공동주택관리</p>
-          <p class="site-name">사업장코드 : 교육원</p>
-          <p class="manager-name">담 당 : 홍길동 ●</p>
-          <p class="last-login">최종접속일시 : 2024-12-31</p>
+      {/* 좌측 사이드바 */}
+      <nav class="sidebar-admin">
+        <div class="logo-admin">
+          <div style="font-size:14px; font-weight:700; color:#ffd700; letter-spacing:1px;">중대재해관리시스템</div>
+          <div class="notification-badge">1</div>
         </div>
         
-        <div class="menu-btn-list">
-          <button class="menu-btn green">계약 사업장 정보 관리</button>
-          <button class="menu-btn white">계약 사업장 관리</button>
-          <button class="menu-btn white">계약 사업장 등록</button>
-          <button class="menu-btn green">계약 사업장 직원 정보 관리</button>
-          <button class="menu-btn white">계약 사업장 직원 관리</button>
-          <button class="menu-btn white">계약 사업장 직원 등록</button>
-          <button class="menu-btn green">이용 관리</button>
-          <button class="menu-btn white">사고사례 관리</button>
-          <button class="menu-btn white">안전보건자료 관리</button>
-          <button class="menu-btn white">공지 관리</button>
-          <button class="menu-btn white">문자 발송</button>
-          <button class="menu-btn green">계정 및 권한 관리</button>
-          <button class="menu-btn white">관리자 계정 관리</button>
-          <button class="menu-btn white">권한 관리</button>
+        <div class="user-info-admin">
+          <p style="font-size:11px; color:#fbbf24; margin-bottom:3px;"><strong>본 사 명 :</strong> 한국공동주택관리</p>
+          <p style="font-size:11px; color:#fbbf24; margin-bottom:3px;">사업장코드 : 교육원</p>
+          <p style="font-size:11px; color:#fff; margin-bottom:3px;"><strong>담 당 :</strong> 홍길동</p>
+          <p style="font-size:10px; color:#cbd5e0;">최종접속일시 : 2024-12-31</p>
+        </div>
+        
+        <div class="menu-list-admin">
+          <div class="menu-section">
+            <div class="menu-title">계약 사업장 정보 관리</div>
+            <a href="#" class="menu-item active">● 계약 사업장 관리</a>
+            <a href="#" class="menu-item">● 계약 사업장 등록</a>
+          </div>
+          
+          <div class="menu-section">
+            <div class="menu-title">계약 사업장 직원 정보 관리</div>
+            <a href="#" class="menu-item">● 계약 사업장 직원 관리</a>
+            <a href="#" class="menu-item">● 계약 사업장 직원 등록</a>
+          </div>
+          
+          <div class="menu-section">
+            <div class="menu-title">이용 관리</div>
+            <a href="#" class="menu-item">● 사고사례 관리</a>
+            <a href="#" class="menu-item">● 안전보건자료 관리</a>
+            <a href="#" class="menu-item">● 공지 관리</a>
+            <a href="#" class="menu-item">● 문자 발송</a>
+          </div>
+          
+          <div class="menu-section">
+            <div class="menu-title">계정 및 권한 관리</div>
+            <a href="#" class="menu-item">● 관리자 계정관리</a>
+            <a href="#" class="menu-item">● 권한 관리</a>
+          </div>
         </div>
       </nav>
       
@@ -132,7 +148,10 @@ app.get('/admin', (c) => {
               <span>담 당 : 홍길동</span>
             </div>
           </div>
-          <div class="period-badge">2025년 상반기</div>
+          <div class="header-right">
+            <span class="site-count">총 사업장 : 10개</span>
+            <div class="period-badge">2025년 상반기</div>
+          </div>
         </header>
         
         {/* 계약사업장 모니터링 테이블 */}
@@ -255,91 +274,130 @@ app.get('/admin', (c) => {
         
         {/* 우측 사이드 패널 */}
         <div class="right-panel">
-          {/* 계약 사업장 상세 신규 구분 등록 현황 */}
+          {/* 계약 사업장 상시 근로자 등록 현황 */}
           <div class="panel-box">
-            <h4>계약 사업장 상세 신규 구분 등록 현황</h4>
-            <div class="stats-grid-panel">
-              <div class="stat-row">
-                <span class="stat-label">등록</span>
-                <span class="stat-value">$20</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">토지사용료</span>
-                <span class="stat-value">$1</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">토지사용료</span>
-                <span class="stat-value">1,500</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">구공유토지</span>
-                <span class="stat-value">6,000</span>
-              </div>
-            </div>
+            <h4>계약 사업장 상시 근로자 등록 현황</h4>
+            <table class="panel-table">
+              <thead>
+                <tr>
+                  <th>구역</th>
+                  <th>등록</th>
+                  <th>승인</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>합계</td>
+                  <td>320</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           
           {/* 계약 사업장 구분 등록 현황 */}
           <div class="panel-box">
             <h4>계약 사업장 구분 등록 현황</h4>
-            <div class="stats-grid-panel">
-              <div class="stat-row">
-                <span class="stat-label">등록</span>
-                <span class="stat-value">$20</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">구분</span>
-                <span class="stat-value"></span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">구매사업장</span>
-                <span class="stat-value">120</span>
-              </div>
-              <div class="stat-row">
-                <span class="stat-label">구공유사업장</span>
-                <span class="stat-value">380</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* 하단 알림 섹션 */}
-        <div class="alerts-section">
-          <div class="alert-box">
-            <h4><span class="badge-m">M</span> 사업장 문의</h4>
-            <div class="alert-item">
-              0000 아파트 오늘등록 요청<span class="alert-date">당일 대기</span>
-            </div>
-            <div class="alert-item">
-              수정 확정 요청<span class="alert-date">당일 대기</span>
-            </div>
-            <div class="alert-item">
-              사업자명 오등록 오류<span class="alert-date">당일 대기</span>
-            </div>
-            <div class="alert-item">
-              사업자명 오등록 오류<span class="alert-date">당일 대기</span>
-            </div>
-            <div class="alert-item">
-              사업자명 오등록 오류<span class="alert-date">수정 보안</span>
-            </div>
-          </div>
-          
-          <div class="alert-box">
-            <h4>사업장 등록 현황</h4>
-            <table style="width:100%; font-size:11px; border-collapse: collapse;">
+            <table class="panel-table">
               <thead>
-                <tr style="background:#f3f4f6">
-                  <th style="padding:8px; border:1px solid #e5e7eb">계약사업장 명</th>
-                  <th style="padding:8px; border:1px solid #e5e7eb">등록사업장명</th>
-                  <th style="padding:8px; border:1px solid #e5e7eb">등록일</th>
-                  <th style="padding:8px; border:1px solid #e5e7eb">상태</th>
+                <tr>
+                  <th>구역</th>
+                  <th>구분</th>
+                  <th>등록</th>
+                  <th>승인</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="padding:6px; border:1px solid #e5e7eb">무림 아파트</td>
-                  <td style="padding:6px; border:1px solid #e5e7eb">0000아파트 오류</td>
-                  <td style="padding:6px; border:1px solid #e5e7eb">2025/01/01</td>
-                  <td style="padding:6px; border:1px solid #e5e7eb">등록</td>
+                  <td>합계</td>
+                  <td>-</td>
+                  <td>120</td>
+                  <td>380</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        {/* 하단 섹션 */}
+        <div class="bottom-section-admin">
+          <div class="system-inquiry-box">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:15px; color:#1f2937;">
+              <span class="badge-red">M</span> 시스템 문의
+            </h4>
+            <table class="inquiry-table">
+              <tbody>
+                <tr>
+                  <td class="inquiry-code">0000 아파트</td>
+                  <td class="inquiry-content">지동등록 소속 입장분, 닫힌<br/>순등 확정요 2025.10.22</td>
+                  <td class="inquiry-status">당일<br/>대기</td>
+                </tr>
+                <tr>
+                  <td class="inquiry-code">사업장 등록시 그러나 ...</td>
+                  <td class="inquiry-content">2025.10.22</td>
+                  <td class="inquiry-status">당일<br/>보안</td>
+                </tr>
+                <tr>
+                  <td class="inquiry-code">0000 아파트</td>
+                  <td class="inquiry-content">사업장명 요청 시 오류...<br/>순등 확정요 2025.10.22</td>
+                  <td class="inquiry-status">당일<br/>보안</td>
+                </tr>
+                <tr>
+                  <td class="inquiry-code">0000 아파트</td>
+                  <td class="inquiry-content">사업장명 요청 시 오류...</td>
+                  <td class="inquiry-status">당일 종료</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="site-registration-box">
+            <h4 style="font-size:13px; font-weight:700; margin-bottom:15px; color:#1f2937;">사업장 등록 현황</h4>
+            <table class="registration-table">
+              <thead>
+                <tr>
+                  <th>계약사업장 명</th>
+                  <th>등록사업장명</th>
+                  <th>등록일</th>
+                  <th>상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>무림 아파트</td>
+                  <td>0000아파트 오류지</td>
+                  <td>2025/01/01</td>
+                  <td>등록</td>
+                </tr>
+                <tr>
+                  <td>조은별</td>
+                  <td>0000아파트 오류지</td>
+                  <td>2025/01/01</td>
+                  <td>삭제</td>
+                </tr>
+                <tr>
+                  <td>서울명공동주택</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>경기공동주택</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>광역대공동주택</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>광역</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td style="padding:6px; border:1px solid #e5e7eb">우리경리</td>

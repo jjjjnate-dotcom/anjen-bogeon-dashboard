@@ -2657,3 +2657,184 @@ body {
   padding: 10px;
 }
 
+
+/* 한공원 대시보드 추가 스타일 */
+.notification-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ef4444;
+  color: white;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.logo-admin {
+  position: relative;
+}
+
+.menu-list-admin {
+  padding: 10px 0;
+}
+
+.menu-section {
+  margin-bottom: 5px;
+}
+
+.menu-title {
+  background: #2d3748;
+  color: white;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  border-top: 1px solid #4a5568;
+  border-bottom: 1px solid #4a5568;
+}
+
+.menu-item {
+  display: block;
+  padding: 8px 20px;
+  color: #cbd5e0;
+  text-decoration: none;
+  font-size: 11px;
+  transition: all 0.2s;
+  background: #1a202c;
+  border-bottom: 1px solid #2d3748;
+}
+
+.menu-item:hover {
+  background: #2d3748;
+  color: white;
+}
+
+.menu-item.active {
+  background: #374151;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-count {
+  font-size: 12px;
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.panel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.panel-table thead th {
+  background: #4a5568;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #2d3748;
+}
+
+.panel-table tbody td {
+  padding: 8px;
+  text-align: center;
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+}
+
+.bottom-section-admin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.system-inquiry-box,
+.site-registration-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.badge-red {
+  display: inline-block;
+  background: #ef4444;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.inquiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.inquiry-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+
+.inquiry-code {
+  color: #1f2937;
+  font-weight: 600;
+  width: 25%;
+}
+
+.inquiry-content {
+  color: #4b5563;
+  width: 55%;
+  line-height: 1.4;
+}
+
+.inquiry-status {
+  color: #ef4444;
+  font-weight: 600;
+  text-align: center;
+  width: 20%;
+}
+
+.registration-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.registration-table thead th {
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
+  font-size: 11px;
+}
+
+.registration-table tbody td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+}
+

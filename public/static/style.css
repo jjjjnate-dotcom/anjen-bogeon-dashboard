@@ -1347,8 +1347,9 @@ body {
 .main-content-site {
   margin-left: 260px;
   margin-top: 50px;
-  padding: 20px;
+  padding: 0;
   min-height: calc(100vh - 50px);
+  background: #f0f2f5;
 }
 
 /* 팝업 */
@@ -2387,8 +2388,9 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 /* 각 등록 박스 */
@@ -2432,7 +2434,10 @@ body {
 .register-box-body {
   background: #e8f5e9;
   padding: 20px;
-  min-height: 200px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* 이행 등록 현황 라벨 */
@@ -2558,8 +2563,9 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .notification-box {

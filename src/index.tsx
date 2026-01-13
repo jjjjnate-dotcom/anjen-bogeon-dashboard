@@ -94,39 +94,25 @@ app.get('/', (c) => {
 app.get('/admin', (c) => {
   return c.render(
     <div class="dashboard admin-dashboard">
-      {/* 좌측 사이드바 */}
-      <nav class="sidebar-admin">
-        <div class="logo-admin">
-          <span class="logo-text">중대재해관리시스템</span>
-          <span class="badge-notification">1</span>
+      {/* 좌측 사이드바 - 통일된 스타일 */}
+      <nav class="common-sidebar">
+        <div class="user-info-box">
+          <p class="business-name">본 사명 : 한국공동주택관리</p>
+          <p class="site-name">사업장코드 : 교육원</p>
+          <p class="manager-name">담 당 : 홍길동 ●</p>
+          <p class="last-login">최종접속일시 : 2024-12-31</p>
         </div>
         
-        <div class="user-info-admin">
-          <p>본사 명 : 한국공동주택관리</p>
-          <p>사업장코드 : 교육원</p>
-          <p class="user-name">담 당 : 홍길동 ●</p>
-          <p>최종접속일시 : 2024-12-31</p>
+        <div class="menu-btn-list">
+          <button class="menu-btn green">기본정보 설정</button>
+          <button class="menu-btn white">계약 사업장 관리</button>
+          <button class="menu-btn white">계약 사업장 등록</button>
+          <button class="menu-btn green">협력사 정보 관리</button>
+          <button class="menu-btn white">사고사례 관리</button>
+          <button class="menu-btn white">안전보건자료 관리</button>
+          <button class="menu-btn green">계정 관리</button>
+          <button class="menu-btn white">권한 관리</button>
         </div>
-        
-        <ul class="menu-admin">
-          <li class="menu-section active">계약 사업장 정보 관리</li>
-          <li class="menu-item"><a href="/admin/sites">계약 사업장 관리</a></li>
-          <li class="menu-item"><a href="/admin/sites/register">계약 사업장 등록</a></li>
-          
-          <li class="menu-section">계약 사업장 직원 정보 관리</li>
-          <li class="menu-item"><a href="/admin/employees">계약 사업장 직원 관리</a></li>
-          <li class="menu-item"><a href="/admin/employees/register">계약 사업장 직원 등록</a></li>
-          
-          <li class="menu-section">이용 관리</li>
-          <li class="menu-item"><a href="/admin/accidents">사고사례 관리</a></li>
-          <li class="menu-item"><a href="/admin/safety-data">안전보건자료 관리</a></li>
-          <li class="menu-item"><a href="/admin/notices">공지 관리</a></li>
-          <li class="menu-item"><a href="/admin/messages">문자 발송</a></li>
-          
-          <li class="menu-section">계정 및 권한 관리</li>
-          <li class="menu-item"><a href="/admin/admins">관리자 계정 관리</a></li>
-          <li class="menu-item"><a href="/admin/permissions">권한 관리</a></li>
-        </ul>
       </nav>
       
       {/* 메인 컨텐츠 */}
@@ -386,40 +372,25 @@ app.get('/admin', (c) => {
 app.get('/headquarters', (c) => {
   return c.render(
     <div class="dashboard hq-dashboard">
-      {/* 좌측 사이드바 */}
-      <nav class="sidebar-hq">
-        <div class="logo-hq">
-          <span class="logo-text">중대재해관리시스템</span>
-          <span class="badge-notification">1</span>
+      {/* 좌측 사이드바 - 통일된 스타일 */}
+      <nav class="common-sidebar">
+        <div class="user-info-box">
+          <p class="business-name">본 사명 : 무림공동주택</p>
+          <p class="site-name">사업장코드 : 본사</p>
+          <p class="manager-name">담 당 : 김철수 ●</p>
+          <p class="last-login">최종접속일자 : 2024-12-31</p>
         </div>
         
-        <div class="user-info-hq">
-          <p class="user-role">본 사명 : 문화휴양지</p>
-          <p class="user-role">사업장코드 : 본사</p>
-          <p class="user-detail">담 당 : 김철수 ●</p>
-          <p class="user-extra">개인정보보호법 & 서비스산업발전법</p>
-          <p class="user-extra">최종접속일자 : 2024-12-31</p>
+        <div class="menu-btn-list">
+          <button class="menu-btn green">기본정보 설정</button>
+          <button class="menu-btn white">사업장 관리</button>
+          <button class="menu-btn white">사업장 등록</button>
+          <button class="menu-btn green">협력사 정보 관리</button>
+          <button class="menu-btn white">직원 관리</button>
+          <button class="menu-btn white">직원 등록</button>
+          <button class="menu-btn green">계정 관리</button>
+          <button class="menu-btn white">권한 관리</button>
         </div>
-        
-        <ul class="menu-hq">
-          <li class="menu-section active">사업장 정보 관리</li>
-          <li class="menu-item"><a href="/headquarters/sites">사업장 관리</a></li>
-          <li class="menu-item"><a href="/headquarters/sites/register">사업장 등록</a></li>
-          
-          <li class="menu-section">직원 정보 관리</li>
-          <li class="menu-item"><a href="/headquarters/employees">직원 관리</a></li>
-          <li class="menu-item"><a href="/headquarters/employees/register">직원 등록</a></li>
-          
-          <li class="menu-section">이용 관리</li>
-          <li class="menu-item"><a href="/headquarters/accidents">사고사례 관리</a></li>
-          <li class="menu-item"><a href="/headquarters/compliance">안전보건조치 관리</a></li>
-          <li class="menu-item"><a href="/headquarters/notices">공지 관리</a></li>
-          <li class="menu-item"><a href="/headquarters/messages">문자 발송</a></li>
-          
-          <li class="menu-section">계정 및 권한 관리</li>
-          <li class="menu-item"><a href="/headquarters/admin">관리자 계정관리</a></li>
-          <li class="menu-item"><a href="/headquarters/permissions">권한 관리</a></li>
-        </ul>
       </nav>
       
       {/* 메인 컨텐츠 */}
@@ -715,32 +686,35 @@ app.get('/site', (c) => {
         </div>
       </header>
       
-      {/* 좌측 사이드바 */}
-      <nav class="sidebar-site">
-        <div class="user-box-site">
-          <p class="user-label">본 사명 : 무림공동주택</p>
-          <p class="user-label">사업장명 : 전세토마 아파트</p>
-          <p class="user-name">담 당 : 김철수 ●</p>
-          <p class="user-date">최근접속일자 : 2024-12-31</p>
+      {/* 좌측 사이드바 - 통일된 스타일 + 파란색 박스 6개 */}
+      <nav class="common-sidebar">
+        <div class="user-info-box">
+          <p class="business-name">본 사명 : 무림공동주택</p>
+          <p class="site-name">사업장명 : 전세토마 아파트</p>
+          <p class="manager-name">담 당 : 김철수 ●</p>
+          <p class="last-login">최근접속일자 : 2024-12-31</p>
         </div>
         
-        <div class="menu-grid">
-          <button class="menu-card navy">법과교육<br/>시스템</button>
-          <button class="menu-card navy">아파트 정리</button>
-          <button class="menu-card navy">한국공동주택<br/>교육진흥원</button>
-          <button class="menu-card navy">전자안전<br/>시스템</button>
-          <button class="menu-card navy">재고표</button>
-          <button class="menu-card navy">위험성평가 담당<br/>자 교육 시스템</button>
+        {/* 파란색 버튼 그리드 (2x3) - 사업장 전용 */}
+        <div class="blue-menu-grid">
+          <button class="blue-menu-btn">법과교육<br/>시스템</button>
+          <button class="blue-menu-btn">아파트 정리</button>
+          <button class="blue-menu-btn">한국공동주택<br/>교육진흥원</button>
+          <button class="blue-menu-btn">전자안전<br/>시스템</button>
+          <button class="blue-menu-btn">재고표</button>
+          <button class="blue-menu-btn">위험성평가 담당자<br/>교육 시스템</button>
         </div>
         
-        <button class="btn-side green">기본정보 설정</button>
-        <button class="btn-side white">사무장 정보 관리</button>
-        <button class="btn-side white">직원 정보 등록</button>
-        <button class="btn-side green">협력사 정보 관리</button>
-        <button class="btn-side white">협력사 정보</button>
-        <button class="btn-side white">협력사 정보등록</button>
-        <button class="btn-side green">계정 관리</button>
-        <button class="btn-side white">계정정보 권한관리</button>
+        <div class="menu-btn-list">
+          <button class="menu-btn green">기본정보 설정</button>
+          <button class="menu-btn white">사무장 정보 관리</button>
+          <button class="menu-btn white">직원 정보 등록</button>
+          <button class="menu-btn green">협력사 정보 관리</button>
+          <button class="menu-btn white">협력사 정보</button>
+          <button class="menu-btn white">협력사 정보등록</button>
+          <button class="menu-btn green">계정 관리</button>
+          <button class="menu-btn white">계정정보 권한관리</button>
+        </div>
       </nav>
       
       {/* 메인 컨텐츠 */}

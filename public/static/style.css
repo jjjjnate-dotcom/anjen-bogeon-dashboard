@@ -1644,6 +1644,129 @@ body {
   }
 }
 
+/* ==================== 공통 사이드바 스타일 (3개 페이지 통일) ==================== */
+.common-sidebar {
+  width: 200px;
+  background: #f7fafc;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  overflow-y: auto;
+  padding: 15px 10px;
+  border-right: 2px solid #e2e8f0;
+}
+
+/* 상단 사용자 정보 박스 */
+.user-info-box {
+  background: #4a5568;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.user-info-box .business-name {
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.user-info-box .site-name {
+  color: #fbbf24;
+  font-weight: 600;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.user-info-box .manager-name {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.user-info-box .last-login {
+  color: #cbd5e0;
+  font-size: 10px;
+}
+
+/* 파란색 버튼 그리드 (2x3) - 사업장 전용 */
+.blue-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.blue-menu-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 18px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  line-height: 1.4;
+  text-align: center;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue-menu-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* 녹색/흰색 버튼 리스트 */
+.menu-btn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-btn {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.menu-btn.green {
+  background: #10b981;
+  color: white;
+}
+
+.menu-btn.green:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.menu-btn.white {
+  background: white;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.menu-btn.white:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
 /* ==================== 한공원(교육원) 대시보드 ==================== */
 .admin-dashboard {
   display: flex;

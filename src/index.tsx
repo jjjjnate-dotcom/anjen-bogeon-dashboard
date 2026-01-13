@@ -422,8 +422,10 @@ app.get('/headquarters', (c) => {
           <button class="btn-filter">필터 보기 ▼</button>
         </div>
         
-        {/* 이행관리 차트 영역 */}
-        <div class="compliance-chart-section">
+        {/* 이행관리 차트 + 테이블 영역 (좌우 배치) */}
+        <div class="compliance-and-tables-wrapper">
+          {/* 왼쪽: 이행관리 차트 */}
+          <div class="compliance-chart-section">
           <div class="chart-row">
             <div class="chart-label">안전/보건 이행관리</div>
             <div class="chart-bars">
@@ -508,18 +510,18 @@ app.get('/headquarters', (c) => {
             <button class="btn-detail">보기</button>
           </div>
           
-          {/* 범례 */}
-          <div class="chart-legend">
-            <span><span class="legend-dot blue"></span> 등록</span>
-            <span><span class="legend-dot red"></span> 등록대기</span>
-            <span><span class="legend-dot black"></span> 등록완료</span>
+            {/* 범례 */}
+            <div class="chart-legend">
+              <span><span class="legend-dot blue"></span> 등록</span>
+              <span><span class="legend-dot red"></span> 등록대기</span>
+              <span><span class="legend-dot black"></span> 등록완료</span>
+            </div>
           </div>
-        </div>
-        
-        {/* 사업장 상시 근로자 현황 & 구분 현황 */}
-        <div class="info-tables">
-          <div class="info-table-left">
-            <h4>사업장 상시 근로자 현황</h4>
+          
+          {/* 오른쪽: 사업장 상시 근로자 현황 & 구분 현황 (2단) */}
+          <div class="info-tables-vertical">
+            <div class="info-table-box">
+              <h4>사업장 상시 근로자 현황</h4>
             <table class="info-table">
               <thead>
                 <tr>
@@ -540,12 +542,12 @@ app.get('/headquarters', (c) => {
                   <td>1,500</td>
                   <td>6,000</td>
                 </tr>
-              </tbody>
-            </table>
-          </div>
-          
-          <div class="info-table-right">
-            <h4>사업장 구분 현황</h4>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="info-table-box">
+              <h4>사업장 구분 현황</h4>
             <table class="info-table">
               <thead>
                 <tr>
@@ -564,8 +566,9 @@ app.get('/headquarters', (c) => {
                   <td>120</td>
                   <td>380</td>
                 </tr>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         

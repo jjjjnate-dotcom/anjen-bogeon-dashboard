@@ -208,113 +208,313 @@ app.get('/admin', (c) => {
 app.get('/headquarters', (c) => {
   return c.render(
     <div class="dashboard hq-dashboard">
-      <nav class="sidebar">
-        <div class="logo">중대재해 관리시스템</div>
-        <div class="user-info">
-          <p>무림개발 본사</p>
-          <p class="user-name">홍길동</p>
+      {/* 좌측 사이드바 */}
+      <nav class="sidebar-hq">
+        <div class="logo-hq">
+          <span class="logo-text">중대재해관리시스템</span>
+          <span class="badge-notification">1</span>
         </div>
-        <ul class="menu">
-          <li class="active"><a href="/headquarters">메인</a></li>
-          <li><a href="/headquarters/sites">사업장 정보</a></li>
-          <li><a href="/headquarters/compliance">이행조치 관리</a></li>
-          <li><a href="/headquarters/requests">이행요청 관리</a></li>
-          <li><a href="/headquarters/employees">신규채용 정보</a></li>
-          <li><a href="/headquarters/notices">사고사례 관리</a></li>
+        
+        <div class="user-info-hq">
+          <p class="user-role">본 사명 : 문화휴양지</p>
+          <p class="user-role">사업장코드 : 본사</p>
+          <p class="user-detail">담 당 : 김철수 ●</p>
+          <p class="user-extra">개인정보보호법 & 서비스산업발전법</p>
+          <p class="user-extra">최종접속일자 : 2024-12-31</p>
+        </div>
+        
+        <ul class="menu-hq">
+          <li class="menu-section active">사업장 정보 관리</li>
+          <li class="menu-item"><a href="/headquarters/sites">사업장 관리</a></li>
+          <li class="menu-item"><a href="/headquarters/sites/register">사업장 등록</a></li>
+          
+          <li class="menu-section">직원 정보 관리</li>
+          <li class="menu-item"><a href="/headquarters/employees">직원 관리</a></li>
+          <li class="menu-item"><a href="/headquarters/employees/register">직원 등록</a></li>
+          
+          <li class="menu-section">이용 관리</li>
+          <li class="menu-item"><a href="/headquarters/accidents">사고사례 관리</a></li>
+          <li class="menu-item"><a href="/headquarters/compliance">안전보건조치 관리</a></li>
+          <li class="menu-item"><a href="/headquarters/notices">공지 관리</a></li>
+          <li class="menu-item"><a href="/headquarters/messages">문자 발송</a></li>
+          
+          <li class="menu-section">계정 및 권한 관리</li>
+          <li class="menu-item"><a href="/headquarters/admin">관리자 계정관리</a></li>
+          <li class="menu-item"><a href="/headquarters/permissions">권한 관리</a></li>
         </ul>
       </nav>
       
-      <main class="main-content">
-        <h2>사업장 정보 현황</h2>
+      {/* 메인 컨텐츠 */}
+      <main class="main-content-hq">
+        {/* 상단 탭 버튼 */}
+        <div class="top-tabs">
+          <button class="tab-btn tab-pink active">이행 요청 등록 관리</button>
+          <button class="tab-btn tab-orange">사업장 안전보건이행 점검관리</button>
+          <button class="tab-btn tab-green">종합 안전보건관리 규정</button>
+          <button class="tab-btn tab-teal">위험성 평가</button>
+          <button class="tab-btn tab-blue">신규채용 정보등록</button>
+        </div>
         
-        {/* 팝업 알림 */}
-        <div class="popup-alert">
-          <div class="popup-content">
-            <h3>📢 신규 등록 요청</h3>
-            <p>무림하우징 2단지에서 직원 정보가 등록되었습니다.</p>
-            <button onclick="closePopup()">확인</button>
+        {/* 기간 선택 */}
+        <div class="period-selector">
+          <span>2025년 상반기</span>
+          <button class="btn-filter">필터 보기 ▼</button>
+        </div>
+        
+        {/* 이행관리 차트 영역 */}
+        <div class="compliance-chart-section">
+          <div class="chart-row">
+            <div class="chart-label">안전/보건 이행관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 40%"></div>
+                <div class="bar bar-red" style="width: 20%"></div>
+                <div class="bar bar-black" style="width: 30%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">교육/훈련 이행관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 35%"></div>
+                <div class="bar bar-red" style="width: 15%"></div>
+                <div class="bar bar-black" style="width: 40%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">위험성평가 이행관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 45%"></div>
+                <div class="bar bar-red" style="width: 10%"></div>
+                <div class="bar bar-black" style="width: 35%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">종사자의견청취 이행관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 30%"></div>
+                <div class="bar bar-red" style="width: 25%"></div>
+                <div class="bar bar-black" style="width: 25%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">용역/도급 안전조치 이행관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 50%"></div>
+                <div class="bar bar-red" style="width: 5%"></div>
+                <div class="bar bar-black" style="width: 35%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">안전보건관리조치 등록관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 40%"></div>
+                <div class="bar bar-red" style="width: 20%"></div>
+                <div class="bar bar-black" style="width: 30%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          <div class="chart-row">
+            <div class="chart-label">신규채용정보등록 관리</div>
+            <div class="chart-bars">
+              <div class="bar-group">
+                <div class="bar bar-blue" style="width: 25%"></div>
+                <div class="bar bar-red" style="width: 30%"></div>
+                <div class="bar bar-black" style="width: 35%"></div>
+              </div>
+            </div>
+            <button class="btn-detail">보기</button>
+          </div>
+          
+          {/* 범례 */}
+          <div class="chart-legend">
+            <span><span class="legend-dot blue"></span> 등록</span>
+            <span><span class="legend-dot red"></span> 등록대기</span>
+            <span><span class="legend-dot black"></span> 등록완료</span>
           </div>
         </div>
         
-        <div class="stats-grid">
-          <div class="stat-card">
-            <h3>관리 사업장</h3>
-            <div class="stat-number">3<span class="unit">개</span></div>
+        {/* 사업장 상시 근로자 현황 & 구분 현황 */}
+        <div class="info-tables">
+          <div class="info-table-left">
+            <h4>사업장 상시 근로자 현황</h4>
+            <table class="info-table">
+              <thead>
+                <tr>
+                  <th>구역</th>
+                  <th colspan="3">상시근로자</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>근무인원</th>
+                  <th>직영인원</th>
+                  <th>도급/협력인원</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>전0</td>
+                  <td>51</td>
+                  <td>1,500</td>
+                  <td>6,000</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           
-          <div class="stat-card">
-            <h3>직영 근로자</h3>
-            <div class="stat-number">45<span class="unit">명</span></div>
-          </div>
-          
-          <div class="stat-card">
-            <h3>도급 근로자</h3>
-            <div class="stat-number">85<span class="unit">명</span></div>
-          </div>
-          
-          <div class="stat-card warning">
-            <h3>이행 대기</h3>
-            <div class="stat-number">5<span class="unit">건</span></div>
+          <div class="info-table-right">
+            <h4>사업장 구분 현황</h4>
+            <table class="info-table">
+              <thead>
+                <tr>
+                  <th>구역</th>
+                  <th colspan="2">구분</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>직영사업장</th>
+                  <th>도급/협력 사업장</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>전0</td>
+                  <td>120</td>
+                  <td>380</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         
-        <div class="section">
-          <div class="section-header">
-            <h3>사업장 이행 등록 현황</h3>
-            <button class="btn-primary" onclick="createRequest()">이행 요청 등록</button>
-          </div>
-          
-          <table class="data-table">
+        {/* 사업장 정보 목록 */}
+        <div class="site-list-section">
+          <h4>사업장 정보 변동 / 요청 현황</h4>
+          <table class="site-list-table">
             <thead>
               <tr>
-                <th>사업장명</th>
-                <th>담당자</th>
-                <th>상시근로자</th>
-                <th>안전보건</th>
-                <th>교육/훈련</th>
-                <th>위험성평가</th>
-                <th>관리</th>
+                <th>NO</th>
+                <th>사업장</th>
+                <th>등록일</th>
+                <th>구분</th>
+                <th>종류</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>무림하우징 1단지</td>
-                <td>이영희</td>
-                <td>15/25</td>
-                <td><span class="badge badge-success">완료</span></td>
-                <td><span class="badge badge-warning">등록대기</span></td>
-                <td><span class="badge badge-success">완료</span></td>
-                <td><button class="btn-sm" onclick="viewSite(4)">보기</button></td>
+                <td>1</td>
+                <td>0000 아파트</td>
+                <td>2025.01.01</td>
+                <td>안전보건관리규정 변경</td>
+                <td>변경 완료</td>
               </tr>
               <tr>
-                <td>무림하우징 2단지</td>
-                <td>박민수</td>
-                <td>12/20</td>
-                <td><span class="badge badge-danger">미등록</span></td>
-                <td><span class="badge badge-danger">미등록</span></td>
-                <td><span class="badge badge-warning">등록대기</span></td>
-                <td><button class="btn-sm" onclick="viewSite(5)">보기</button></td>
+                <td>2</td>
+                <td>0000 아파트</td>
+                <td>2025.01.01</td>
+                <td>근무/ 종업 대상 등록</td>
+                <td>변경 완료</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>0000 아파트</td>
+                <td>2025.01.01</td>
+                <td>변경 절차완료</td>
+                <td>산업 완료</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>0000 아파트</td>
+                <td>2025.01.01</td>
+                <td>연구개발 의뢰완료</td>
+                <td>산업 완료</td>
               </tr>
             </tbody>
           </table>
+          <div class="pagination">1 2 3</div>
+        </div>
+        
+        {/* 하단 알림 카드 3개 */}
+        <div class="notification-cards">
+          <div class="noti-card">
+            <div class="noti-header">
+              <h4>사고사례 전파</h4>
+              <button class="btn-more">더보기 +</button>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+          </div>
+          
+          <div class="noti-card">
+            <div class="noti-header">
+              <h4>안전보건자료</h4>
+              <button class="btn-more">더보기 +</button>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+          </div>
+          
+          <div class="noti-card">
+            <div class="noti-header">
+              <h4>공지사항</h4>
+              <button class="btn-more">더보기 +</button>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+            <div class="noti-item">
+              <span class="badge-new-red">N</span>
+              <span>[산업안전보건관리단] 재해사고 보수 전파 문의망 사고</span>
+            </div>
+          </div>
         </div>
       </main>
-      
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          function closePopup() {
-            document.querySelector('.popup-alert').style.display = 'none';
-          }
-          
-          function createRequest() {
-            window.location.href = '/headquarters/requests/create';
-          }
-          
-          function viewSite(siteId) {
-            window.location.href = '/headquarters/sites/' + siteId;
-          }
-        `
-      }} />
     </div>
   )
 })
